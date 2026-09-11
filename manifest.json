@@ -1,0 +1,18 @@
+{
+  "name": "الآذان والقرآن الكريم - Islamic Azan & Quran",
+  "short_name": "Azan & Quran",
+  "description": "Comprehensive Islamic Suite - Holy Quran, Azan Alerts, Prayer Times, Qibla, Daily Dhikr, Tajweed & Halal Guide",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050B14",
+  "theme_color": "#071322",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

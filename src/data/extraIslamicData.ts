@@ -1,0 +1,432 @@
+import { IslamicNameItem, HalalEAdditive, AsmaulHusnaItem, TajweedRuleItem } from '../types';
+
+export const ISLAMIC_NAMES: IslamicNameItem[] = [
+  {
+    id: '1',
+    nameAr: 'مُحَمَّد',
+    nameUg: 'مۇھەممەد',
+    nameEn: 'Muhammad',
+    nameTr: 'Muhammed',
+    gender: 'boy',
+    meaningUg: 'ماختالغان، مەدھىيىلەنگەن، گۈزەل ئەخلاقلىق، پەيغەمبىرىمىز ﷺ نىڭ مۇبارەك ئىسمى',
+    meaningEn: 'Praised, commendable, virtuous',
+    meaningTr: 'Övülmüş, methedilmiş, güzel ahlaklı',
+    meaningAr: 'المحمود الخصال والمثنى عليه دائماً',
+    origin: 'ئەرەبچە (Arabic)'
+  },
+  {
+    id: '2',
+    nameAr: 'فَاطِمَة',
+    nameUg: 'فاتىمە',
+    nameEn: 'Fatima',
+    nameTr: 'Fatıma',
+    gender: 'girl',
+    meaningUg: 'ئۆزى ۋە ئەۋلادلىرى دوزاختىن نېرى قىلىنغان، پەيغەمبىرىمىزنىڭ ئەڭ سۆيۈملۈك قىزى',
+    meaningEn: 'One who weans, protected from fire, daughter of the Prophet ﷺ',
+    meaningTr: 'Kendisi ve nesli cehennemden uzak tutulmuş, iffetli',
+    meaningAr: 'التي فطمها الله وذريتها عن النار',
+    origin: 'ئەرەبچە (Arabic)'
+  },
+  {
+    id: '3',
+    nameAr: 'عُمَر',
+    nameUg: 'ئۆمەر',
+    nameEn: 'Omar',
+    nameTr: 'Ömer',
+    gender: 'boy',
+    meaningUg: 'ئۇزۇن ئۆمۈرلۈك، ئادالەتپەرۋەر، ھەق بىلەن ناھەقنى ئايرىغۇچى (فارۇق)',
+    meaningEn: 'Long-lived, flourishing, justice-oriented',
+    meaningTr: 'Uzun ömürlü, adalet timsali, hak ile batılı ayıran',
+    meaningAr: 'العامر للخير والعدل، ذو العمر المديد',
+    origin: 'ئەرەبچە (Arabic)'
+  },
+  {
+    id: '4',
+    nameAr: 'عَائِشَة',
+    nameUg: 'ئائىشە',
+    nameEn: 'Aisha',
+    nameTr: 'Ayşe',
+    gender: 'girl',
+    meaningUg: 'ھاياتى بەرىكەتلىك، باياشات ۋە خۇشال ياشىغۇچى، مۆمىنلەرنىڭ ئانىسى',
+    meaningEn: 'Living, prosperous, full of life',
+    meaningTr: 'Rahat ve huzurlu yaşayan, müminlerin annesi',
+    meaningAr: 'الحية ذات العيش الرغيد والطيبة',
+    origin: 'ئەرەبچە (Arabic)'
+  },
+  {
+    id: '5',
+    nameAr: 'يُوسُف',
+    nameUg: 'يۈسۈف',
+    nameEn: 'Yusuf',
+    nameTr: 'Yusuf',
+    gender: 'boy',
+    meaningUg: 'ئاللاھ زىيادە قىلغۇچى، چىرايلىق ۋە پاك، پەيغەمبەر ئىسمى',
+    meaningEn: 'God increases, handsome and pure',
+    meaningTr: 'Allah artırır, güzel ahlaklı ve sevimli',
+    meaningAr: 'يزيد الله في النعمة والجمال والبركة',
+    origin: 'ئىبرانىيچە / ئەرەبچە'
+  },
+  {
+    id: '6',
+    nameAr: 'مَرْيَم',
+    nameUg: 'مەريەم',
+    nameEn: 'Maryam',
+    nameTr: 'Meryem',
+    gender: 'girl',
+    meaningUg: 'ئاللاھقا ئۆزىنى بېغىشلىغان، پاك ۋە تەقۋادار، ئىيسا ئەلەيھىسسالامنىڭ ئانىسى',
+    meaningEn: 'Pious, devout servant of God, pure',
+    meaningTr: 'İbadete düşkün, iffetli ve tertemiz',
+    meaningAr: 'العابدة الخادمة لربها والطاهرة',
+    origin: 'ئىبرانىيچە / ئەرەبچە'
+  },
+  {
+    id: '7',
+    nameAr: 'عَلِيّ',
+    nameUg: 'ئەلى',
+    nameEn: 'Ali',
+    nameTr: 'Ali',
+    gender: 'boy',
+    meaningUg: 'ئالىي، ئالىيجاناب، مەرتىۋىسى ئۈستۈن، جاسارەتلىك',
+    meaningEn: 'Exalted, noble, high-ranking',
+    meaningTr: 'Yüce, yüksek mertebeli, cesur',
+    meaningAr: 'الرفيع القدر والشريف الشجاع',
+    origin: 'ئەرەبچە (Arabic)'
+  },
+  {
+    id: '8',
+    nameAr: 'زَيْنَب',
+    nameUg: 'زەينەپ',
+    nameEn: 'Zaynab',
+    nameTr: 'Zeynep',
+    gender: 'girl',
+    meaningUg: 'چىرايلىق خۇشپۇراق دەرەخ، ئاتىسىنىڭ زىننىتى',
+    meaningEn: 'Fragrant flowering tree, ornament of the father',
+    meaningTr: 'Güzel kokulu süs ağacı, babasının süsü',
+    meaningAr: 'شجرة طيبة الرائحة حسنة المظهر',
+    origin: 'ئەرەبچە (Arabic)'
+  },
+  {
+    id: '9',
+    nameAr: 'حَمْزَة',
+    nameUg: 'ھەمزە',
+    nameEn: 'Hamza',
+    nameTr: 'Hamza',
+    gender: 'boy',
+    meaningUg: 'ئارسلان، كۈچلۈك ۋە قەھرىمان، شەھىدلەرنىڭ سەردارى',
+    meaningEn: 'Lion, strong, steadfast',
+    meaningTr: 'Aslan, güçlü, şehitler efendisi',
+    meaningAr: 'الأسد الشجاع القوي الحازم',
+    origin: 'ئەرەبچە (Arabic)'
+  },
+  {
+    id: '10',
+    nameAr: 'نُور',
+    nameUg: 'نۇر',
+    nameEn: 'Noor',
+    nameTr: 'Nur',
+    gender: 'unisex',
+    meaningUg: 'يورۇقلۇق، ھىدايەت نۇرى، ئايدىڭلىق',
+    meaningEn: 'Divine Light, illumination, guidance',
+    meaningTr: 'Işık, aydınlık, ilahi nur',
+    meaningAr: 'الضياء الساطع والهدى الإلهي',
+    origin: 'ئەرەبچە (Arabic)'
+  }
+];
+
+export const HALAL_ADDITIVES: HalalEAdditive[] = [
+  {
+    code: 'E120',
+    name: 'Carmine / Cochineal',
+    status: 'haram',
+    category: 'رەڭ بەرگۈچى (Colorant)',
+    sourceUg: 'ھاشاراتلاردىن (قۇرتتىن) ئېلىنىدۇ',
+    sourceEn: 'Derived from crushed Cochineal insects',
+    sourceTr: 'Ezilmiş böceklerden elde edilir',
+    detailsUg: 'ھاشاراتتىن ئېلىنىدىغان قىزىل رەڭ بەرگۈچى بولۇپ، ھەنەفىي ۋە كۆپچىلىك ئۆلىمالاردا ھارام ھېسابلىنىدۇ.',
+    detailsEn: 'Red pigment extracted from female scale insects; forbidden according to majority consensus.',
+    detailsTr: 'Böcek kökenli kırmızı boya maddesi; İslam alimlerinin çoğunluğuna göre haramdır.'
+  },
+  {
+    code: 'E441',
+    name: 'Gelatin (چوشقا ياكى نامەلۇم ھايۋان)',
+    status: 'mushbooh',
+    category: 'قويۇقلاتقۇچى (Gelling agent)',
+    sourceUg: 'ھايۋان سۆڭىكى ۋە تېرىسى',
+    sourceEn: 'Animal skin and bones (often porcine or non-dhabihah)',
+    sourceTr: 'Hayvan derisi ve kemikleri',
+    detailsUg: 'ئەگەر %100 ھالال كالا ياكى بېلىقتىن ئىشلەنگەنلىكى گۇۋاھلاندۇرۇلمىغان بولسا، شۈبھىلىك/ھارام ھېسابلىنىدۇ.',
+    detailsEn: 'Gelatin must be strictly certified 100% Halal bovine or fish based.',
+    detailsTr: 'Helal kesim sığır veya balık jelatini olduğu belirtilmedikçe şüpheli/haramdır.'
+  },
+  {
+    code: 'E100',
+    name: 'Curcumin (زەردەچوۋا)',
+    status: 'halal',
+    category: 'رەڭ بەرگۈچى (تەبىئىي)',
+    sourceUg: 'تەبىئىي ئۆسۈملۈك (كۇركۇما)',
+    sourceEn: 'Plant-derived from turmeric root',
+    sourceTr: 'Zerdeçal kökünden bitkisel',
+    detailsUg: '%100 ئۆسۈملۈك يىلتىزىدىن ئېلىنىدىغان سېرىق رەڭ بولۇپ، تولۇق ھالال.',
+    detailsEn: 'Completely natural plant dye from turmeric; 100% Halal.',
+    detailsTr: 'Zerdeçaldan elde edilen tamamen doğal sarı renklendirici; helaldir.'
+  }
+];
+
+// ئاللاھنىڭ گۈزەل 99 ئىسمى (Asmaul Husna)
+export const ASMAUL_HUSNA: AsmaulHusnaItem[] = [
+  {
+    number: 1,
+    nameAr: 'الرَّحْمَٰنُ',
+    transliteration: 'Ar-Rahman',
+    nameUg: 'ئەررەھمان',
+    nameEn: 'The Most Gracious',
+    nameTr: 'Er-Rahmân',
+    meaningUg: 'چەكسىز مېھرىبان، پۈتۈن مەخلۇقاتلارغا مېھرى-شەپقەت قىلغۇچى',
+    meaningEn: 'The Beneficent, The Infinitely Merciful to all creation',
+    meaningTr: 'Bütün mahlukata sonsuz merhamet ve şefkat gösteren',
+    meaningAr: 'واسع الرحمة الذي وسعت رحمته كل شيء في الدنيا والآخرة',
+    benefitUg: 'قەلبتىكى تاش-مۇزنىڭ ئېرىشى، مېھرىبانلىق ۋە رەھمەت تىلەش ئۈچۈن كۆپ زىكىر قىلىنىدۇ.'
+  },
+  {
+    number: 2,
+    nameAr: 'الرَّحِيمُ',
+    transliteration: 'Ar-Raheem',
+    nameUg: 'ئەررەھىم',
+    nameEn: 'The Most Merciful',
+    nameTr: 'Er-Rahîm',
+    meaningUg: 'ئالاھىدە رەھىم قىلغۇچى، مۆمىن بەندىلىرىنى ئاخىرەتتە مەغپىرەت قىلغۇچى',
+    meaningEn: 'The Most Merciful, Especially to believers in the Hereafter',
+    meaningTr: 'Ahirette mümin kullarına hususi merhamet eden',
+    meaningAr: 'المنعم برحمته الخاصة بالمؤمنين يوم القيامة',
+    benefitUg: 'قىيىنچىلىقلاردا ئاللاھنىڭ خاس ياردىمىگە ئېرىشىش ئۈچۈن ئوقۇلىدۇ.'
+  },
+  {
+    number: 3,
+    nameAr: 'الْمَلِكُ',
+    transliteration: 'Al-Malik',
+    nameUg: 'ئەلمەلىك',
+    nameEn: 'The Absolute Ruler / King',
+    nameTr: 'El-Melik',
+    meaningUg: 'مۇتلەق ھۆكۈمران ۋە ئىگە، پۈتۈن كائىناتنىڭ ھەقىقىي پادىشاھى',
+    meaningEn: 'The Sovereign Lord, King of the Universe',
+    meaningTr: 'Mülkün gerçek sahibi, bütün kainatın mutlak hakimi',
+    meaningAr: 'صاحب الملك الحقيقي المتصرف في خلقه بلا منازع',
+    benefitUg: 'روھىي كۈچ، قەلب مۇستەھكەملىكى ۋە رىزىق بايلىقى ئۈچۈن ئوقۇلىدۇ.'
+  },
+  {
+    number: 4,
+    nameAr: 'الْقُدُّوسُ',
+    transliteration: 'Al-Quddus',
+    nameUg: 'ئەلقۇددۇس',
+    nameEn: 'The Most Holy / Pure',
+    nameTr: 'El-Kuddûs',
+    meaningUg: 'پۈتۈن نۇقسان، ئەيىب ۋە شەكتىن مۇتلەق پاك زات',
+    meaningEn: 'The Pure, Free from all imperfections and deficiencies',
+    meaningTr: 'Her türlü eksiklik ve ayıptan münezzeh, pek temiz',
+    meaningAr: 'المنزه عن كل نقص وعيب والمتصف بصفات الكمال',
+    benefitUg: 'روھىي روھسىزلىق ۋە كۆڭۈل غۇبارلىرىنى تازىلاش ئۈچۈن دۇئا قىلىنىدۇ.'
+  },
+  {
+    number: 5,
+    nameAr: 'السَّلَامُ',
+    transliteration: 'As-Salam',
+    nameUg: 'ئەسسەلام',
+    nameEn: 'The Source of Peace',
+    nameTr: 'Es-Selâm',
+    meaningUg: 'تىنچلىق ۋە ئامانلىق بەرگۈچى، ئاپەت-پالاكەتلەردىن ساقلىغۇچى',
+    meaningEn: 'The Source of Peace, Safety and Security',
+    meaningTr: 'Kullarını her türlü tehlikeden esenliğe çıkaran',
+    meaningAr: 'الذي سلمت ذاته وصفاته من كل عيب والمانح للأمن والسلام',
+    benefitUg: 'خاتىرجەملىك ۋە كېسەللىكلەردىن شىپالىق تىلەش ئۈچۈن ئوقۇلىدۇ.'
+  },
+  {
+    number: 6,
+    nameAr: 'الْمُؤْمِنُ',
+    transliteration: 'Al-Mu’min',
+    nameUg: 'ئەلمۇئمىن',
+    nameEn: 'The Giver of Faith and Security',
+    nameTr: 'El-Mü’min',
+    meaningUg: 'ئىمان-ئىشەنچ ئاتا قىلغۇچى، بەندىلىرىگە ئەمىنلىك بەرگۈچى',
+    meaningEn: 'The Inspirer of Faith, The Provider of Safety',
+    meaningTr: 'Gönüllerde iman ışığını yakan, emniyet veren',
+    meaningAr: 'المصدق لرسله والمانح للأمن لمن استجار به',
+    benefitUg: 'قورقۇنچ ۋە ئەندىشىدىن ساقلىنىش ئۈچۈن زىكىر قىلىنىدۇ.'
+  },
+  {
+    number: 7,
+    nameAr: 'الْمُهَيْمِنُ',
+    transliteration: 'Al-Muhaymin',
+    nameUg: 'ئەلمۇھەيمىن',
+    nameEn: 'The Guardian, The Overseer',
+    nameTr: 'El-Müheymin',
+    meaningUg: 'ھەر بىر ئىشنى كۆزىتىپ تۇرغۇچى ۋە قوغدىغۇچى، ھۆكۈمران',
+    meaningEn: 'The Guardian, Witness and Preserver over all things',
+    meaningTr: 'Bütün varlıkları görüp gözeten ve koruyan',
+    meaningAr: 'الرقيب على كل شيء والشاهد الحافظ على خلقه',
+    benefitUg: 'تەپەككۇر ۋە قەلب كۆزىنىڭ ئېچىلىشى ئۈچۈن ئوقۇلىدۇ.'
+  },
+  {
+    number: 8,
+    nameAr: 'الْعَزِيزُ',
+    transliteration: 'Al-Azeez',
+    nameUg: 'ئەلئەزىز',
+    nameEn: 'The All-Mighty, Invincible',
+    nameTr: 'El-Azîz',
+    meaningUg: 'ھەممىدىن غالىب، كۈچ-قۇدرەتلىك ۋە تەڭداشسىز ئەزىز',
+    meaningEn: 'The All-Powerful, Unconquerable and Exalted',
+    meaningTr: 'İzzet ve şeref sahibi, mağlup edilmesi imkansız galip',
+    meaningAr: 'القوي الغالب الذي لا يقهر ولا يغلب',
+    benefitUg: 'قىيىنچىلىقلارنى يېڭىش ۋە ئىززەت تېپىش ئۈچۈن زىكىر قىلىنىدۇ.'
+  },
+  {
+    number: 9,
+    nameAr: 'الْغَفَّارُ',
+    transliteration: 'Al-Ghaffar',
+    nameUg: 'ئەلغەففار',
+    nameEn: 'The All-Forgiving',
+    nameTr: 'El-Gaffâr',
+    meaningUg: 'گۇناھلارنى قايتا-قايتا كەچۈرگۈچى، ئەيىبلەرنى ياپقۇچى',
+    meaningEn: 'The Repeatedly Forgiving, Who veils shortcomings',
+    meaningTr: 'Günahları çokça bağışlayan ve örten',
+    meaningAr: 'الذي يغفر الذنوب مراراً وتكراراً ويستر العيوب',
+    benefitUg: 'تەۋبىنىڭ قوبۇل بولۇشى ۋە ئىستىغفار ئۈچۈن زىكىر قىلىنىدۇ.'
+  },
+  {
+    number: 10,
+    nameAr: 'الرَّزَّاقُ',
+    transliteration: 'Ar-Razzaq',
+    nameUg: 'ئەررەززاق',
+    nameEn: 'The Provider, The Sustainer',
+    nameTr: 'Er-Rezzâk',
+    meaningUg: 'پۈتكۈل مەخلۇقاتلارغا مۆل رىزىق ئاتا قىلغۇچى چەكسىز رىزىق ئىگىسى',
+    meaningEn: 'The Continuous Provider of Sustenance to all creation',
+    meaningTr: 'Bütün mahlukata rızkını bolca veren',
+    meaningAr: 'المتكفل بأرزاق خلقه وموزعها بحكمته',
+    benefitUg: 'ھالال رىزىق ۋە بەرىكەت تىلەشتە كۆپ ئوقۇلىدۇ.'
+  }
+];
+
+// 4. تەجۋىد قائىدىلىرى (Complete 8 Essential Tajweed Rules)
+export const TAJWEED_RULES: TajweedRuleItem[] = [
+  {
+    id: 'ghunnah',
+    nameAr: 'الغنة (نّ / مّ)',
+    nameUg: 'غۇننە (تۈۋرۈكلۈك يوشۇرۇن تاۋۇش)',
+    nameTr: 'Gurre (Şeddeli Nun ve Mim)',
+    nameEn: 'Ghunnah (Nasalization)',
+    color: '#10B981',
+    descriptionUg: 'شەددىلىك نۇن (نّ) ياكى مىم (مّ) ھەرپلىرى كەلگەندە بۇرۇن بوشلۇقىدىن 2 ھەرىكەت مىقدارىدا يېقىملىق غۇڭشىغان ئاۋاز چىقىرىپ سوزۇپ ئوقۇلىدۇ.',
+    descriptionEn: 'Holding nasal sound for 2 counts when encountering Noon or Meem with Shaddah (نّ / مّ).',
+    descriptionTr: 'Şeddeli Nun ve Mim harflerinde genizden 2 hareke tutularak çıkarılan sestir.',
+    exampleAr: 'إِنَّ اللَّهَ مَعَ الصَّابِرِينَ / عَمَّ يَتَسَاءَلُونَ',
+    exampleAyah: 'Al-Baqarah: 153',
+    letters: ['نّ', 'مّ']
+  },
+  {
+    id: 'qalqalah',
+    nameAr: 'القلقلة (ق ط ب ج د)',
+    nameUg: 'قەلقەلە (تەۋرەتمە تاۋۇش)',
+    nameTr: 'Kalkale (Sarsma / Vurgu)',
+    nameEn: 'Qalqalah (Echoing / Bouncing sound)',
+    color: '#3B82F6',
+    descriptionUg: 'ق، ط، ب، ج، د (قُطْبُ جَدٍّ) ھەرپلىرى سۈكۈنلۈك ياكى توختاش ئورنىدا كەلگەندە مەخرەجنى قايتۇرۇپ تەۋرىتىپ كۈچلۈك ئوقۇلىدۇ.',
+    descriptionEn: 'Echoing or rebounding sound when any of the letters (ق ط ب ج د) carries a Sukoon or stop.',
+    descriptionTr: 'Kutbu Ceddin (ق ط ب ج د) harfleri cezimli veya vakıf halinde geldiğinde harfin sesini sarsarak okumaktır.',
+    exampleAr: 'قُلْ هُوَ اللَّهُ أَحَدٌ ﴿١﴾ اللَّهُ الصَّمَدُ ﴿٢﴾ لَمْ يَلِدْ وَلَمْ يُولَدْ',
+    exampleAyah: 'Al-Ikhlas: 1-3',
+    letters: ['ق', 'ط', 'ب', 'ج', 'د']
+  },
+  {
+    id: 'izhar',
+    nameAr: 'الإظهار الحلقي (ء هـ ع ح غ خ)',
+    nameUg: 'ئىزھار (ئوچۇق ۋە ئېنىق ئوقۇش)',
+    nameTr: 'İzhar (Boğaz Harfleri)',
+    nameEn: 'Izhar (Clear Pronunciation)',
+    color: '#EC4899',
+    descriptionUg: 'سۈكۈنلۈك نۇن ياكى تەنۋىندىن كېيىن بوغۇز ھەرپلىرى (ء، هـ، ع، ح، غ، خ) كەلگەندە نۇن ھەرپى ھېچقانداق غۇننە ياكى سوزۇشسىز ئېنىق چىقىرىلىدۇ.',
+    descriptionEn: 'Pronouncing the Noon Saakin or Tanween clearly without any nasalization when followed by throat letters (ء هـ ع ح غ خ).',
+    descriptionTr: 'Sakin nun veya tenvinden sonra boğaz harfleri geldiğinde nun sesini net ve duru çıkarmaktır.',
+    exampleAr: 'مَنْ آمَنَ / أَنْعَمْتَ عَلَيْهِمْ / كُفُوًا أَحَدٌ',
+    exampleAyah: 'Al-Fatihah: 7',
+    letters: ['ء', 'هـ', 'ع', 'ح', 'غ', 'خ']
+  },
+  {
+    id: 'idgham_ghunnah',
+    nameAr: 'الإدغام بغنة (ي ن م و)',
+    nameUg: 'ئىدغام بىغۇننە (غۇننىلىك قوشۇپ ئوقۇش)',
+    nameTr: 'İdgam Meal Gunne',
+    nameEn: 'Idgham with Ghunnah',
+    color: '#06B6D4',
+    descriptionUg: 'سۈكۈنلۈك نۇن ياكى تەنۋىندىن كېيىن ي، ن، م، و (يَنْمُو) ھەرپلىرى كەلگەندە نۇن كېيىنكى ھەرپكە سىڭدۈرۈلۈپ، 2 ھەرىكەت غۇننە بىلەن تۇتۇپ ئوقۇلىدۇ.',
+    descriptionEn: 'Merging Noon Saakin or Tanween into the next letter with 2 counts of nasal sound when followed by (ي ن م و).',
+    descriptionTr: 'Sakin nun veya tenvinden sonra (ي ن م و) harfleri geldiğinde genizden tutarak birleştirmektir.',
+    exampleAr: 'مَن يَقُولُ / خَيْرًا يَرَهُ / مِن وَالٍ',
+    exampleAyah: 'Al-Baqarah: 8',
+    letters: ['ي', 'ن', 'م', 'و']
+  },
+  {
+    id: 'idgham_bila_ghunnah',
+    nameAr: 'الإدغام بغير غنة (ل ر)',
+    nameUg: 'ئىدغام بىلە غۇننە (غۇننىسىز تولۇق قوشۇش)',
+    nameTr: 'İdgam Bila Gunne',
+    nameEn: 'Idgham without Ghunnah',
+    color: '#6366F1',
+    descriptionUg: 'سۈكۈنلۈك نۇن ياكى تەنۋىندىن كېيىن لام (ل) ياكى را (ر) كەلسە، نۇن تاۋۇشى تولۇق يوقىلىپ كېيىنكى ھەرپ ش Latter شەكلىدە غۇننىسىز ئوقۇلىدۇ.',
+    descriptionEn: 'Complete assimilation of Noon into (ل) or (ر) without any nasal sound.',
+    descriptionTr: 'Sakin nun veya tenvinden sonra Lam veya Ra geldiğinde nun sesini tamamen yok ederek okumaktır.',
+    exampleAr: 'مِّن رَّبِّهِمْ / غَفُورٌ رَّحِيمٌ / هُدًى لِّلْمُتَّقِينَ',
+    exampleAyah: 'Al-Baqarah: 2',
+    letters: ['ل', 'ر']
+  },
+  {
+    id: 'iqlab',
+    nameAr: 'الإقلاب (ب)',
+    nameUg: 'ئىقلاب (نۇننى مىمگە ئايلاندۇرۇش)',
+    nameTr: 'İklab (Mim Sesine Çevirme)',
+    nameEn: 'Iqlab (Conversion to Meem)',
+    color: '#EAB308',
+    descriptionUg: 'سۈكۈنلۈك نۇن ياكى تەنۋىندىن كېيىن با (ب) ھەرپى كەلسە، نۇن تاۋۇشى مەخپىي مىم (م) تاۋۇشىغا ئايلاندۇرۇلۇپ غۇننە بىلەن ئوقۇلىدۇ (مۇسھەفتە كىچىك م بەلگىسى قويۇلىدۇ).',
+    descriptionEn: 'Converting the sound of Noon Saakin or Tanween into a concealed Meem with Ghunnah when followed by Ba (ب).',
+    descriptionTr: 'Sakin nun veya tenvinden sonra Be (ب) harfi geldiğinde nun sesini mim sesine dönüştürerek okumaktır.',
+    exampleAr: 'مِنْ بَعْدِ / سَمِيعٌ بَصِيرٌ / أَنْبِئْهُمْ',
+    exampleAyah: 'Al-Baqarah: 27',
+    letters: ['ب']
+  },
+  {
+    id: 'ikhfa',
+    nameAr: 'الإخفاء الحقيقي',
+    nameUg: 'ئىخفا (يوشۇرۇپ غۇڭشىتىش)',
+    nameTr: 'İhfa (Gizleyerek Okuma)',
+    nameEn: 'Ikhfa (Concealment)',
+    color: '#8B5CF6',
+    descriptionUg: 'تەنۋىن ياكى سۈكۈنلۈك نۇندىن كېيىن 15 ئىخفا ھەرپىنىڭ بىرى كەلسە، نۇن تاۋۇشىنى كېيىنكى ھەرپنىڭ مەخرەج ئالدىدا يوشۇرۇپ 2 ھەرىكەت غۇننە بىلەن ئوقۇلىدۇ.',
+    descriptionEn: 'Pronouncing noon saakin or tanween with a light nasal sound without full closure before 15 Ikhfa letters.',
+    descriptionTr: 'Tenvin veya sakin nun\'dan sonra 15 ihfa harfinden biri geldiğinde genizden tutarak gizli okumaktır.',
+    exampleAr: 'مِنْ قَبْلِكُمْ / أَنْفُسَكُمْ / مَنْ كَانَ',
+    exampleAyah: 'Al-Baqarah: 21',
+    letters: ['ت', 'ث', 'ج', 'د', 'ذ', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ف', 'ق', 'ك']
+  },
+  {
+    id: 'madd',
+    nameAr: 'المد (المتصل والمنفصل واللازم)',
+    nameUg: 'مەد (سوزۇش قائىدىلىرى)',
+    nameTr: 'Med Kuralları (Uzatma)',
+    nameEn: 'Madd (Elongation)',
+    color: '#F97316',
+    descriptionUg: 'سوزۇق ھەرپلەردىن كېيىن ھەمزە ياكى سۈكۈن كەلسە: مۇتتەسىل (بىر سۆزدە)، مۇنفەسىل (ئايرىم سۆزدە) ۋە مەددى لازىم (شەددىلىك) تۈرلىرى بويىچە 4 تىن 6 ھەرىكەتكىچە سوزۇپ ئوقۇلىدۇ.',
+    descriptionEn: 'Elongating the vowel from 4 to 6 counts due to Hamzah or Sukoon.',
+    descriptionTr: 'Med harflerinden sonra hemze veya sükun geldiğinde 4 ila 6 hareke uzatılarak okunur.',
+    exampleAr: 'وَالسَّمَاءِ وَالطَّارِقِ / جَاءَ نَصْرُ اللَّهِ / وَلَا الضَّالِّينَ',
+    exampleAyah: 'Al-Fatihah: 7',
+    letters: ['ا', 'و', 'ي']
+  }
+];
+
+export const RAMADAN_DUAS = {
+  iftarUg: "ئاللاھۇممە لەكە سۇمتۇ ۋە ئەلا رىزقىكە ئەفتەرتۇ (ئى ئاللاھ! سېنىڭ رەزايىڭ ئۈچۈن روزا تۇتتۇم ۋە سەن بەرگەن رىزىق بىلەن ئىپتار قىلدىم). زەھەبەز زەمەئۇ ۋاب تەللەتيل ئۇروقۇ ۋە سەبەتەل ئەجرۇ ئىنشائاللاھ.",
+  iftarAr: "اللَّهُمَّ لَكَ صُمْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ، ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ وَثَبَتَ الأَجْرُ إِنْ شَاءَ اللَّهُ",
+  iftarTr: "Allah'ım! Senin rızan için oruç tuttum, senin rızkınla iftar ettim. Susuzluk gitti, damarlar ıslandı ve inşallah ecir kesinleşti.",
+  iftarEn: "O Allah, for You I have fasted, and with Your provision I have broken my fast. The thirst has gone, the veins are moistened, and the reward is confirmed, if Allah wills.",
+  suhoorIntentionUg: "نەۋەيتۇ ئەن ئەسۇمە سەۋمە شەھىرى رەمەزانە مىنەل فەجرى ئىلال مەغرىبى خالىسەن لىللاھى تەئالا.",
+  suhoorIntentionAr: "نَوَيْتُ أَنْ أَصُومَ صَوْمَ شَهْرِ رَمَضَانَ مِنَ الْفَجْرِ إِلَى الْمَغْرِبِ خَالِصًا لِلَّهِ تَعَالَى"
+};

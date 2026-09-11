@@ -1,0 +1,6 @@
+{
+  "name": "الآذان والقرآن الكريم - Islamic Azan & Quran",
+  "description": "Comprehensive Islamic Suite in Uyghur, Arabic, English, and Turkish: Prayer Times & Azan alerts, Holy Quran with word-by-word analysis, Khatam tracker, AI Tajweed coach, Qaza tracker, Ramadan hub, Zakat calculator, Halal scanner, 99 Names of Allah, and Android/WearOS previews.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
