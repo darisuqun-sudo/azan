@@ -35,7 +35,11 @@ export const AyahCardScreen: React.FC<AyahCardScreenProps> = ({ onNavigate, lang
 
   const handleCopyText = () => {
     const textToCopy = `«${activeAyah.text}»\n\nتەرجىمىسى: ${activeAyah.translationUg}\n(قۇرئان كەرىم، ${selectedSurah === 1 ? 'سۈرە فاتىھە' : 'سۈرە بەقەرە'} ${activeAyah.numberInSurah}-ئايەت)`;
-    navigator.clipboard.writeText(textToCopy);
+    try {
+      navigator.clipboard?.writeText(textToCopy)?.catch(() => {});
+    } catch {
+      // ignore
+    }
     setShowCopied(true);
     soundService.playChime();
     setTimeout(() => setShowCopied(false), 2000);

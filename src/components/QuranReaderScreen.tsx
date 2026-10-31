@@ -291,7 +291,11 @@ export const QuranReaderScreen: React.FC<QuranReaderScreenProps> = ({
 
   const handleCopyAyah = (ayah: Ayah) => {
     const text = `${ayah.text} ﴿${ayah.numberInSurah}﴾\n— سورة ${currentSurah.name}`;
-    navigator.clipboard?.writeText(text);
+    try {
+      navigator.clipboard?.writeText(text)?.catch(() => {});
+    } catch {
+      // ignore
+    }
     setCopiedNotification(true);
     setTimeout(() => setCopiedNotification(false), 2000);
   };

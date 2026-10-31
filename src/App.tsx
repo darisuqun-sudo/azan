@@ -528,6 +528,7 @@ export default function App() {
               {activeScreen === 'tasbih' && (
                 <TasbihScreen 
                   onNavigate={handleNavigate}
+                  lang={lang}
                 />
               )}
 
@@ -535,6 +536,7 @@ export default function App() {
                 <QiblaCompassScreen 
                   onNavigate={handleNavigate}
                   selectedCity={selectedCity}
+                  lang={lang}
                 />
               )}
 

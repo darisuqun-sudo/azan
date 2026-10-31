@@ -41,7 +41,11 @@ export const HadithScreen: React.FC<HadithScreenProps> = ({ onNavigate }) => {
   const handleShare = (hadith: typeof HADITH_LIST[0]) => {
     soundService.playTasbihClick();
     const text = `﴿ ${hadith.titleUg} ﴾\n\nعن ${hadith.narrator}:\n«${hadith.arabicText}»\n\n[ئۇيغۇرچە تەرجىمىسى]:\n${hadith.translationUg}\n\n[ھېكمىتى]:\n${hadith.lessonUg || ''}\n\n— مەنبە: ${hadith.book}`;
-    navigator.clipboard?.writeText(text);
+    try {
+      navigator.clipboard?.writeText(text).catch(() => {});
+    } catch {
+      // ignore clipboard error
+    }
     setCopiedId(hadith.id);
     setTimeout(() => setCopiedId(null), 2500);
   };

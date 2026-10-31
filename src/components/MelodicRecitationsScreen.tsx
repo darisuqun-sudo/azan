@@ -181,7 +181,11 @@ export const MelodicRecitationsScreen: React.FC<MelodicRecitationsScreenProps> =
 
   const handleShare = (track: MelodicRecitationItem) => {
     const shareText = `🎙️ ${track.titleUg} (${track.surahNameUg})\nقارىي: ${track.reciterNameUg}\n\nقۇرئان كەرىم ئەڭ مۇڭ تىلاۋەتلەر بۆلىكى`;
-    navigator.clipboard?.writeText(shareText);
+    try {
+      navigator.clipboard?.writeText(shareText)?.catch(() => {});
+    } catch {
+      // ignore
+    }
     setCopiedId(track.id);
     setTimeout(() => setCopiedId(null), 2000);
   };

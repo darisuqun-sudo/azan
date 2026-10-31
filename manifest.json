@@ -1,18 +1,57 @@
 {
-  "name": "الآذان والقرآن الكريم - Islamic Azan & Quran",
+  "id": "/",
+  "name": "الآذان والقرآن الكريم - ناماز ۋە قۇرئان",
   "short_name": "Azan & Quran",
-  "description": "Comprehensive Islamic Suite - Holy Quran, Azan Alerts, Prayer Times, Qibla, Daily Dhikr, Tajweed & Halal Guide",
+  "description": "ئەزان، ناماز ۋاقىتلىرى، قۇرئان كەرىم (114 سۈرە تورسىز)، قىبلە، زىكىر تەسبىھ ئەپى",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#050B14",
-  "theme_color": "#071322",
   "orientation": "portrait",
+  "background_color": "#071322",
+  "theme_color": "#071322",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["lifestyle", "utilities", "books", "education"],
   "icons": [
     {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
       "src": "/icon.svg",
-      "sizes": "192x192 512x512",
+      "sizes": "512x512",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "الآذان والقرآن الكريم - Mobile View"
+    },
+    {
+      "src": "/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "الآذان والقرآن الكريم - Desktop View"
     }
   ]
 }

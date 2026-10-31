@@ -10,22 +10,62 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { soundService } from '../utils/audioPlayer';
-import { ActiveScreen } from '../types';
+import { ActiveScreen, Language } from '../types';
 
 interface TasbihScreenProps {
   onNavigate: (screen: ActiveScreen) => void;
+  lang?: Language;
 }
 
 const PRESET_DHIKR = [
-  { ar: 'سُبْحَانَ اللَّهِ', ug: 'سۇبھاناللاھ (ئاللاھ بارلىق كەمچىلىكلەردىن پاكتۇر)', target: 33 },
-  { ar: 'الْحَمْدُ لِلَّهِ', ug: 'ئەلھەمدۇلىللاھ (جىمى ھەمدۇسانا ئاللاھقا خاستۇر)', target: 33 },
-  { ar: 'اللَّهُ أَكْبَرُ', ug: 'ئاللاھۇ ئەكبەر (ئاللاھ ئەڭ ئۇلۇغتۇر)', target: 33 },
-  { ar: 'لَا إِلَٰهَ إِلَّا اللَّهُ', ug: 'لاھىلاھە ئىللەللاھ (ئاللاھتىن باشقا ھەقىقىي ئىلاھ يوق)', target: 100 },
-  { ar: 'أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ', ug: 'ئەستەغفىرۇللاھ (ئاللاھتىن مەغپىرەت تىلەيمەن)', target: 100 },
-  { ar: 'اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ', ug: 'پەيغەمبەر ئەلەيھىسسالامغا دۇرۇت سالام', target: 100 }
+  { 
+    ar: 'سُبْحَانَ اللَّهِ', 
+    ug: 'سۇبھاناللاھ (ئاللاھ بارلىق كەمچىلىكلەردىن پاكتۇر)', 
+    en: 'SubhanAllah (Glory be to Allah)',
+    tr: 'Sübhanallah (Allah her türlü eksiklikten münezzehtir)',
+    target: 33 
+  },
+  { 
+    ar: 'الْحَمْدُ لِلَّهِ', 
+    ug: 'ئەلھەمدۇلىللاھ (جىمى ھەمدۇسانا ئاللاھقا خاستۇر)', 
+    en: 'Alhamdulillah (All praise is due to Allah)',
+    tr: 'Elhamdülillah (Bütün övgüler Allah\'a aittir)',
+    target: 33 
+  },
+  { 
+    ar: 'اللَّهُ أَكْبَرُ', 
+    ug: 'ئاللاھۇ ئەكبەر (ئاللاھ ئەڭ ئۇلۇغتۇر)', 
+    en: 'Allahu Akbar (Allah is the Greatest)',
+    tr: 'Allahu Ekber (Allah en büyüktür)',
+    target: 33 
+  },
+  { 
+    ar: 'لَا إِلَٰهَ إِلَّا اللَّهُ', 
+    ug: 'لاھىلاھە ئىللەللاھ (ئاللاھتىن باشقا ھەقىقىي ئىلاھ يوق)', 
+    en: 'La ilaha illallah (None has the right to be worshipped but Allah)',
+    tr: 'Lâ ilâhe illallah (Allah\'tan başka ilah yoktur)',
+    target: 100 
+  },
+  { 
+    ar: 'أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ', 
+    ug: 'ئەستەغفىرۇللاھ (ئاللاھتىن مەغپىرەت تىلەيمەن)', 
+    en: 'Astaghfirullah wa atubu ilayh (I seek forgiveness of Allah and turn to Him)',
+    tr: 'Estağfirullah ve etûbü ileyh (Allah\'tan af diler ve O\'na tövbe ederim)',
+    target: 100 
+  },
+  { 
+    ar: 'اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ', 
+    ug: 'پەيغەمبەر ئەلەيھىسسالامغا دۇرۇت سالام', 
+    en: 'Allahumma salli \'ala Muhammad (O Allah, send blessings upon Muhammad)',
+    tr: 'Allahümme salli ala Muhammed (Allah\'ım, Muhammed\'e salat eyle)',
+    target: 100 
+  }
 ];
 
-export const TasbihScreen: React.FC<TasbihScreenProps> = ({ onNavigate }) => {
+export const TasbihScreen: React.FC<TasbihScreenProps> = ({ 
+  onNavigate,
+  lang = 'ug' 
+}) => {
   const [count, setCount] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const [selectedDhikrIndex, setSelectedDhikrIndex] = useState(0);
@@ -59,6 +99,11 @@ export const TasbihScreen: React.FC<TasbihScreenProps> = ({ onNavigate }) => {
     setCount(0);
   };
 
+  const dhikrMeaning = lang === 'ug' ? currentDhikr.ug :
+                       lang === 'ar' ? currentDhikr.ar :
+                       lang === 'tr' ? currentDhikr.tr :
+                       currentDhikr.en;
+
   return (
     <div className="relative min-h-full flex flex-col justify-between bg-[#07111E] text-white overflow-hidden pb-16 font-arabic select-none">
       
@@ -66,19 +111,24 @@ export const TasbihScreen: React.FC<TasbihScreenProps> = ({ onNavigate }) => {
       <div className="flex items-center justify-between px-4 py-3 border-b border-[#D4AF37]/20 bg-[#09182A]">
         <button 
           onClick={() => onNavigate('home')}
-          className="w-9 h-9 rounded-full bg-[#0E2138] border border-[#D4AF37]/30 flex items-center justify-center text-[#E5C378]"
+          className="w-9 h-9 rounded-full bg-[#0E2138] border border-[#D4AF37]/30 flex items-center justify-center text-[#E5C378] active:scale-95 transition-transform"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
 
         <div className="text-center">
-          <h2 className="text-xl font-bold font-quran gold-text">السبحة الإلكترونية</h2>
-          <span className="text-[11px] text-gray-400">ئېلېكترونلۇق تەسبيھ ۋە زىكىر</span>
+          <h2 className="text-xl font-bold font-quran gold-text">
+            {lang === 'ug' ? 'ئېلېكترونلۇق تەسبيھ' : lang === 'ar' ? 'السبحة الإلكترونية' : lang === 'tr' ? 'Dijital Tesbih' : 'Digital Tasbih'}
+          </h2>
+          <span className="text-[11px] text-gray-400">
+            {lang === 'ug' ? 'زىكىر ۋە تەسبىھ تارتىش' : lang === 'ar' ? 'الأذكار والتسبيح اليومي' : lang === 'tr' ? 'Günlük Zikirler' : 'Daily Dhikr & Tasbih'}
+          </span>
         </div>
 
         <button 
           onClick={() => setSoundEnabled(!soundEnabled)}
-          className="w-9 h-9 rounded-full bg-[#0E2138] border border-[#D4AF37]/30 flex items-center justify-center text-[#E5C378]"
+          className="w-9 h-9 rounded-full bg-[#0E2138] border border-[#D4AF37]/30 flex items-center justify-center text-[#E5C378] active:scale-95 transition-transform"
+          title="ئاۋاز"
         >
           {soundEnabled ? <Volume2 className="w-4 h-4 text-[#D4AF37]" /> : <VolumeX className="w-4 h-4 text-gray-400" />}
         </button>
@@ -93,7 +143,7 @@ export const TasbihScreen: React.FC<TasbihScreenProps> = ({ onNavigate }) => {
             {currentDhikr.ar}
           </h3>
           <p className="text-xs text-[#93C5FD] leading-relaxed">
-            {currentDhikr.ug}
+            {dhikrMeaning}
           </p>
         </div>
 
@@ -111,17 +161,19 @@ export const TasbihScreen: React.FC<TasbihScreenProps> = ({ onNavigate }) => {
 
           {/* Center Digital Display */}
           <div className="relative z-10 flex flex-col items-center">
-            <span className="text-xs text-[#D4AF37] font-medium tracking-widest uppercase">العدد الحالي</span>
+            <span className="text-xs text-[#D4AF37] font-medium tracking-widest uppercase">
+              {lang === 'ug' ? 'نۆۋەتتىكى سانى' : lang === 'ar' ? 'العدد الحالي' : lang === 'tr' ? 'Mevcut Sayaç' : 'Current Count'}
+            </span>
             <span className="text-6xl font-extrabold font-mono text-white my-1 drop-shadow-md">
               {count}
             </span>
             <div className="flex items-center gap-1 text-xs text-[#4ADE80] font-bold">
-              <span>نىشان: {target}</span>
+              <span>{lang === 'ug' ? 'نىشان:' : lang === 'ar' ? 'الهدف:' : lang === 'tr' ? 'Hedef:' : 'Target:'} {target}</span>
               <span>•</span>
-              <span>دەۋرى: {Math.floor(count / target)}</span>
+              <span>{lang === 'ug' ? 'دەۋرى:' : lang === 'ar' ? 'الدورة:' : lang === 'tr' ? 'Devir:' : 'Lap:'} {Math.floor(count / target)}</span>
             </div>
             <span className="text-[11px] text-gray-400 mt-2 bg-[#050F1A] px-3 py-1 rounded-full border border-white/10">
-              باسسىڭىز سانىلىدۇ (اضغط للتسبيح)
+              {lang === 'ug' ? 'باسسىڭىز سانىلىدۇ (تەسبىھ)' : lang === 'ar' ? 'اضغط للتسبيح' : lang === 'tr' ? 'Çekmek için dokunun' : 'Tap to Count'}
             </span>
           </div>
         </div>
@@ -129,20 +181,24 @@ export const TasbihScreen: React.FC<TasbihScreenProps> = ({ onNavigate }) => {
         {/* Stats & Quick Actions */}
         <div className="flex items-center justify-between w-full max-w-xs mt-4 px-2">
           <div className="text-center">
-            <span className="text-[10px] text-gray-400 block">ئومۇمىي سانى</span>
+            <span className="text-[10px] text-gray-400 block">
+              {lang === 'ug' ? 'ئومۇمىي سانى' : lang === 'ar' ? 'المجموع الكلي' : lang === 'tr' ? 'Toplam' : 'Total'}
+            </span>
             <span className="text-base font-bold font-mono text-[#D4AF37]">{totalCount}</span>
           </div>
 
           <button 
             onClick={handleReset}
-            className="flex items-center gap-1 px-4 py-2 rounded-xl bg-[#0E2034] border border-[#D4AF37]/30 text-xs text-[#E5C378] hover:bg-white/10 cursor-pointer shadow-sm"
+            className="flex items-center gap-1 px-4 py-2 rounded-xl bg-[#0E2034] border border-[#D4AF37]/30 text-xs text-[#E5C378] hover:bg-white/10 cursor-pointer shadow-sm active:scale-95 transition-all"
           >
             <RotateCcw className="w-3.5 h-3.5" />
-            <span>قايتا نۆللەش (تصفير)</span>
+            <span>{lang === 'ug' ? 'قايتا نۆللەش' : lang === 'ar' ? 'تصفير' : lang === 'tr' ? 'Sıfırla' : 'Reset'}</span>
           </button>
 
           <div className="text-center">
-            <span className="text-[10px] text-gray-400 block">نىشان سانى</span>
+            <span className="text-[10px] text-gray-400 block">
+              {lang === 'ug' ? 'نىشان' : lang === 'ar' ? 'الهدف' : lang === 'tr' ? 'Hedef' : 'Target'}
+            </span>
             <span className="text-base font-bold font-mono text-[#4ADE80]">{target}</span>
           </div>
         </div>
@@ -151,7 +207,9 @@ export const TasbihScreen: React.FC<TasbihScreenProps> = ({ onNavigate }) => {
 
       {/* Preset Dhikr Selector */}
       <div className="px-4 py-2 bg-[#09182A] border-t border-[#D4AF37]/20">
-        <span className="text-[11px] text-[#D4AF37] font-bold block mb-1.5">زىكىر تاللاش (اختر الذكر):</span>
+        <span className="text-[11px] text-[#D4AF37] font-bold block mb-1.5">
+          {lang === 'ug' ? 'زىكىر تاللاش:' : lang === 'ar' ? 'اختر الذكر:' : lang === 'tr' ? 'Zikir Seçimi:' : 'Select Dhikr:'}
+        </span>
         <div className="flex gap-2 overflow-x-auto pb-1">
           {PRESET_DHIKR.map((d, i) => (
             <button
@@ -161,7 +219,7 @@ export const TasbihScreen: React.FC<TasbihScreenProps> = ({ onNavigate }) => {
                 setTarget(d.target);
                 setCount(0);
               }}
-              className={`px-3 py-1.5 rounded-xl text-xs whitespace-nowrap transition-colors flex-shrink-0 ${
+              className={`px-3 py-1.5 rounded-xl text-xs whitespace-nowrap transition-colors flex-shrink-0 cursor-pointer ${
                 selectedDhikrIndex === i 
                   ? 'bg-[#D4AF37] text-black font-bold' 
                   : 'bg-[#0E2034] text-gray-300 hover:text-white border border-white/10'

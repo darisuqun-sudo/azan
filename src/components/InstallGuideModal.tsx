@@ -64,6 +64,8 @@ export const InstallGuideModal: React.FC<InstallGuideModalProps> = ({
 
   if (!isOpen) return null;
 
+  const [manualNotice, setManualNotice] = useState<string | null>(null);
+
   const handleInstallClick = async () => {
     if (deferredPrompt) {
       deferredPrompt.prompt();
@@ -73,16 +75,21 @@ export const InstallGuideModal: React.FC<InstallGuideModalProps> = ({
       }
       setDeferredPrompt(null);
     } else {
-      // If no native prompt event, give clear guidance
-      alert(lang === 'ug' 
-        ? 'تېلېفونىڭىزدىكى Chrome تور كۆرگۈچىنىڭ ئوڭ ئۈستىدىكى 3 چېكىتنى بېسىپ «ئەپنى قاچىلاش» (Install app) نى تاللاڭ.' 
-        : 'Open browser menu (3 dots) and select "Install app" or "Add to Home screen"');
+      // If no native prompt event, give clear in-modal guidance
+      setManualNotice(lang === 'ug' 
+        ? 'تېلېفونىڭىزدىكى Chrome تور كۆرگۈچىنىڭ ئوڭ ئۈستىدىكى 3 چېكىت (⋮) نى بېسىپ «ئەپنى قاچىلاش» (Install app) ياكى «باش بەتكە قوشۇش» نى تاللاڭ.' 
+        : 'Open browser menu (⋮) and select "Install app" or "Add to Home screen"');
+      setTimeout(() => setManualNotice(null), 6000);
     }
   };
 
   const handleCopyLink = () => {
     const url = window.location.href;
-    navigator.clipboard.writeText(url);
+    try {
+      navigator.clipboard?.writeText(url)?.catch(() => {});
+    } catch {
+      // ignore
+    }
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -140,6 +147,13 @@ export const InstallGuideModal: React.FC<InstallGuideModalProps> = ({
                 <Download className="w-4 h-4" />
                 <span>ھازىر قاچىلاش</span>
               </button>
+            </div>
+          )}
+
+          {manualNotice && (
+            <div className="p-3 rounded-2xl bg-amber-950/70 border border-amber-500/50 text-amber-200 text-xs flex items-center gap-2 animate-fadeIn">
+              <span className="text-base shrink-0">💡</span>
+              <span className="font-medium leading-relaxed">{manualNotice}</span>
             </div>
           )}
 

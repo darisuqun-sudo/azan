@@ -27,7 +27,11 @@ export const AndroidPlanModal: React.FC<AndroidPlanModalProps> = ({ isOpen, onCl
   if (!isOpen) return null;
 
   const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
+    try {
+      navigator.clipboard?.writeText(text)?.catch(() => {});
+    } catch {
+      // ignore
+    }
     setCopiedCode(true);
     setTimeout(() => setCopiedCode(false), 2000);
   };

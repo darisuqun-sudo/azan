@@ -60,7 +60,11 @@ export const RamadanScreen: React.FC<RamadanScreenProps> = ({ onNavigate, lang }
   };
 
   const copyDua = (text: string, id: string) => {
-    navigator.clipboard?.writeText(text);
+    try {
+      navigator.clipboard?.writeText(text)?.catch(() => {});
+    } catch {
+      // ignore
+    }
     setCopied(id);
     soundService.playTasbihClick();
     setTimeout(() => setCopied(null), 2000);

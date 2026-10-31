@@ -97,7 +97,11 @@ export const DuasScreen: React.FC<DuasScreenProps> = ({ onNavigate, lang = 'ug' 
 
   const handleShare = (id: string, dua: DuaItem) => {
     const text = `﴿ ${dua.titleUg || dua.titleAr} ﴾\n\n${dua.arabicText}\n\n[ئوقۇلۇشى]: ${dua.transliterationUg || ''}\n\n[مەنىسى]: ${dua.translationUg}\n\n— مەنبە: ${dua.reference || ''}`;
-    navigator.clipboard?.writeText(text);
+    try {
+      navigator.clipboard?.writeText(text)?.catch(() => {});
+    } catch {
+      // ignore
+    }
     setCopiedId(id);
     setTimeout(() => setCopiedId(null), 2500);
   };
